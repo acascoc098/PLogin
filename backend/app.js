@@ -16,9 +16,12 @@ app.use(express.urlencoded({ extended: true }));
 //La carpeta public tiene contenido estático
 app.use(express.static('public'));
 
+// cargamos configuración desde .env
+dotenv.config();
+
 // Configuración middleware express-session
-/*app.use(session({
-    secret: 'unsupersecretoinconfesable',
+app.use(session({
+    secret: 'supersecretoinconfesable',
     resave: true,
     saveUninitialized: false
 }));
@@ -27,10 +30,7 @@ app.use(express.static('public'));
 app.use((req, res, next) => {
     res.locals.currentUser = req.session.user;
     next();
-});*/
-
-// cargamos configuración desde .env
-dotenv.config();
+});
 
 mongoose.connect(process.env.MONGO_URI);
 
