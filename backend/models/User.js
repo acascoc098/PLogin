@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 //Defino esquema
-const userFormat = mondgoose.Schema({
+const userFormat = mongoose.Schema({
     username: { 
         type: String, 
         unique: true, 

@@ -8,8 +8,7 @@ const session = require('express-session');
 // para cargar configuración de la APP desde .env
 //como los properties de java
 const dotenv = require('dotenv');
-// sistema de login y registro
-const authRoutes = require('./routes/auth');
+
 
 app.set('view engine', 'pug');
 app.use(express.urlencoded({ extended: true }));
@@ -33,12 +32,16 @@ app.use((req, res, next) => {
 // cargamos configuración desde .env
 dotenv.config();
 
+// sistema de login y registro
+const authRoutes = require('./routes/auth');
+app.use('/auth', authRoutes);
+
 app.get('/',(req,res)=>{
-    res.send('Hola Mundo');
+    res.redirect('/auth');
 });
 
 app.listen(process.env.SERVER_PORT, () => {
     console.log(`Servidor en funcionamiento en el puerto ${process.env.SERVER_PORT}`);
 });
 
-mongoose.connect(process.env.MONGO_URI);
+//mongoose.connect(process.env.MONGO_URI);

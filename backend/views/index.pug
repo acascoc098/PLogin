@@ -1,0 +1,12 @@
+html 
+    head
+        title Bienvenido 
+    body
+        h1 Bienvenido #(currentUser ? currentUser.username : 'Invitad@')
+        
+        if !currentUser
+            ul 
+                li 
+                    a(href="/auth/aulogin") Sign in (Entrar)
+                li
+                    a(href="/auth/register") Sign up (Resgistarse)
