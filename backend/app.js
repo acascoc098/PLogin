@@ -9,7 +9,7 @@ const session = require('express-session');
 //como los properties de java
 const dotenv = require('dotenv');
 // sistema de login y registro
-const authRoutes = require('./routes/auth');
+//const authRoutes = require('./routes/auth');
 
 app.set('view engine', 'pug');
 app.use(express.urlencoded({ extended: true }));
@@ -18,7 +18,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static('public'));
 
 // Configuración middleware express-session
-app.use(session({
+/*app.use(session({
     secret: 'unsupersecretoinconfesable',
     resave: true,
     saveUninitialized: false
@@ -28,7 +28,7 @@ app.use(session({
 app.use((req, res, next) => {
     res.locals.currentUser = req.session.user;
     next();
-});
+});*/
 
 // cargamos configuración desde .env
 dotenv.config();
