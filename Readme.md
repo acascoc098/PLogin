@@ -11,4 +11,6 @@ MONGO_URI=mongodb://root:83uddjfp0cmMD@localhost:27017/GestionAcademica?authSour
 BACKEND_PORT=8000
 ```
 
-Donde `MONGO_URI` es la URL de conexión a Mongo y `BACKEND_PORT` es el puerto 
+Donde `MONGO_URI` es la URL de conexión a Mongo y `BACKEND_PORT` es el puerto donde corre el servidor.
+
+Creamos el modelo de datos para el ususatio `models/Users.js`.
