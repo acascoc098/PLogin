@@ -32,6 +32,8 @@ app.use((req, res, next) => {
 // cargamos configuración desde .env
 dotenv.config();
 
+mongoose.connect(process.env.MONGO_URI);
+
 // sistema de login y registro
 const authRoutes = require('./routes/auth');
 app.use('/auth', authRoutes);
@@ -43,5 +45,3 @@ app.get('/',(req,res)=>{
 app.listen(process.env.SERVER_PORT, () => {
     console.log(`Servidor en funcionamiento en el puerto ${process.env.SERVER_PORT}`);
 });
-
-//mongoose.connect(process.env.MONGO_URI);
