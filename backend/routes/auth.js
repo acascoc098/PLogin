@@ -16,12 +16,14 @@ router.post('/register', async (req,res) => {
     /*console.log('Username:' + username + 
                 '; password: ' + password + 
                 '; Email: ' + email)*/
+
+    const saltedPassword = bcrypt.hashSync(password,10)
     //Lo hacemos para mongo
-    const nuevouser = new User(
-        username,
-        bcrypt.hashSync(password,10),
-        email
-    )
+    const nuevouser = new User({
+        username: username,
+        password: saltedPassword,
+        email: email
+    })
 
     try {
         await nuevouser.save();
