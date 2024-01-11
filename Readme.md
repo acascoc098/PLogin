@@ -50,3 +50,5 @@ RUTA | MÉTODO | OBSERVACIONES
 /auth/register | POST | Guardar datos formulario registro
 /auth/login | GET   | Mostrar formulario login
 /auth/login |POST   |   Guaradar datos formulario login
+
+Este fichero tiene la información para hacer la autenticación.

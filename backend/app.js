@@ -9,7 +9,7 @@ const session = require('express-session');
 //como los properties de java
 const dotenv = require('dotenv');
 // sistema de login y registro
-//const authRoutes = require('./routes/auth');
+const authRoutes = require('./routes/auth');
 
 app.set('view engine', 'pug');
 app.use(express.urlencoded({ extended: true }));
