@@ -1,0 +1,14 @@
+html 
+    head 
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        title  Entrada en el sistema
+    body 
+        form(action="/auth/login", method="get")
+            label(for="username") Nombre de usuario:
+            input(type="text", name="username", id="username")br
+
+            label(for="password") Constraseña:
+            input(type="password", name="password", id="password")br
+
+            button(type="submit") Sign in

@@ -35,4 +35,8 @@ router.post('/register', async (req,res) => {
     res.send('Datos recibidos correctamente')
 })
 
+router.get('/login', (req,res) => {
+    res.render('login');
+});
+
 module.exports = router;

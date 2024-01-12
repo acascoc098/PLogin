@@ -9,7 +9,6 @@ const session = require('express-session');
 //como los properties de java
 const dotenv = require('dotenv');
 
-
 app.set('view engine', 'pug');
 app.use(express.urlencoded({ extended: true }));
 
