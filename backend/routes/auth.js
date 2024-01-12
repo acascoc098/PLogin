@@ -39,4 +39,18 @@ router.get('/login', (req,res) => {
     res.render('login');
 });
 
+router.post('/login', async (req,res) => {
+    const {username, password} = req.body;
+    const user = await user.findOne(
+        {username: username}
+    );
+    if(user && bcrypt.compareSync(password, user.password)){
+        user.password = '';//Para evitar que vean el hash
+        req.session.user = user;
+        res.render('Credenciales correctas');
+    } else{
+        res.render('Credenciales incorrectas');
+    };
+})
+
 module.exports = router;
