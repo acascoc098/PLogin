@@ -27,11 +27,18 @@ app.use(session({
 
  // Middleware para pasar información de sesión a las vistas
 app.use((req, res, next) => {
-    if(req.session.user && !req.path.includes('/auth/login')){
-        res.locals.currentUser = req.session.user;
-        next();
+    res.locals.currentUser = req.session.user;
+    if(req.session.user){
+        if(!req.path.startsWith('/auth/login')){
+            //Para hacer GET/POST al login
+            next();
+        }else{
+            //Cuando la ruta es distinta redirecciona a login
+            return res.redirect('/auth/login');
+        }
     }else{
-        res.redirect('/auth/login');
+        //Ya estamos logeados
+        next();
     }
 });
 
