@@ -27,9 +27,12 @@ router.post('/register', async (req,res) => {
 
     try {
         await nuevouser.save();
-        res.send('Usuario registrado correctamente')
+        //res.send('Usuario registrado correctamente')
+        //Para que se vea más bonito, cambiamos todos los send por esto
+        res.render('mensaje', {tituloPagina: 'REGISTRO', mensajePagina: 'Usuario registrado correctamente'})
     } catch (error) {
-        res.send('ERROR: ' + error)
+        //res.send('ERROR: ' + error)
+        res.render('mensaje', {tituloPagina: 'REGISTRO', mensajePagina: 'ERROR: ' + error})
     }
 
     res.send('Datos recibidos correctamente')
@@ -41,15 +44,17 @@ router.get('/login', (req,res) => {
 
 router.post('/login', async (req,res) => {
     const {username, password} = req.body;
-    const user = await user.findOne(
+    const user = await User.findOne(
         {username: username}
     );
     if(user && bcrypt.compareSync(password, user.password)){
         user.password = '';//Para evitar que vean el hash
         req.session.user = user;
-        res.render('Credenciales correctas');
+        //res.send('Credenciales correctas');
+        res.render('mensaje', {tituloPagina: 'LOGIN', mensajePagina: 'Usuario logeado'})
     } else{
-        res.render('Credenciales incorrectas');
+        //res.send('Credenciales incorrectas');
+        res.render('mensaje', {tituloPagina: 'LOGIN', mensajePagina: 'ERROR: Usuario no encontrado'})
     };
 })
 
