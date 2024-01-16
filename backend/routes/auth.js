@@ -52,6 +52,7 @@ router.post('/login', async (req,res) => {
         req.session.user = user;
         //res.send('Credenciales correctas');
         res.render('mensaje', {tituloPagina: 'LOGIN', mensajePagina: 'Usuario logeado'})
+        //res.redirect('auth/')
     } else{
         //res.send('Credenciales incorrectas');
         res.render('mensaje', {tituloPagina: 'LOGIN', mensajePagina: 'ERROR: Usuario no encontrado'})
