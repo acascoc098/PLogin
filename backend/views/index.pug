@@ -2,11 +2,15 @@ html
     head
         title Bienvenido 
     body
-        h1 Bienvenido #(currentUser ? currentUser.username : 'Invitad@')
-        
+        h1 Bienvenido #{currentUser ? currentUser.username : 'Invitado'}
+
         if !currentUser
             ul 
                 li 
-                    a(href="/auth/login") Sign in (Entrar)
-                li
-                    a(href="/auth/register") Sign up (Resgistarse)
+                    a(href="/auth/login") Sign in (entrar en el sistema)
+                li 
+                    a(href="/auth/register") Sign up (alta usuario)
+        else 
+            p Logeado como: #{currentUser.username}
+            p 
+                a(href="/auth/logout") Logout

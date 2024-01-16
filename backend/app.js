@@ -27,8 +27,12 @@ app.use(session({
 
  // Middleware para pasar información de sesión a las vistas
 app.use((req, res, next) => {
-    res.locals.currentUser = req.session.user;
-    next();
+    if(req.session.user && !req.path.includes('/auth/login')){
+        res.locals.currentUser = req.session.user;
+        next();
+    }else{
+        res.redirect('/auth/login');
+    }
 });
 
 mongoose.connect(process.env.MONGO_URI);
