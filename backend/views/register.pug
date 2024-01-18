@@ -4,14 +4,15 @@ html
         meta(name="viewport", content="width=device-width, initial-scale=1.0")
         title  Alta en el sistema
     body 
-        form(action="/auth/register", method="get")
-            label(for="username") Nombre de usuario:
-            input(type="text", name="username", id="username")br
-
-            label(for="password") Constraseña:
-            input(type="password", name="password", id="password")br
-
-            label(for="email") Correo electrónico:
-            input(type="text", name="email", id="email")br
-
-            button(type="submit") Registrar
+        h1 Alta en el sistema
+        form(action="/auth/register", method="post") 
+            label(for="username") Nombre de Usuario:
+            input(type="text", name="username", id="username")
+            br
+            label(for="password") Contraseña:
+            input(type="password", name="password" id="password")
+            br
+            label(for="email") Correo Electrónico:
+            input(type="email", name="email", id="email")
+            br
+            button(type="submit") Sign up!

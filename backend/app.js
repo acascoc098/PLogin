@@ -16,7 +16,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static('public'));
 
 // cargamos configuración desde .env
-dotenv.config();
+//dotenv.config();
 
 // Configuración middleware express-session
 app.use(session({
@@ -28,8 +28,9 @@ app.use(session({
  // Middleware para pasar información de sesión a las vistas
 app.use((req, res, next) => {
     res.locals.currentUser = req.session.user;
-    if(req.session.user){
-        if(!req.path.startsWith('/auth/login')){
+    if(!req.session.user){
+        if(req.path.startsWith('/auth/login') ||
+        req.path.startsWith('/auth/register')){
             //Para hacer GET/POST al login
             next();
         }else{
@@ -42,6 +43,7 @@ app.use((req, res, next) => {
     }
 });
 
+dotenv.config();
 mongoose.connect(process.env.MONGO_URI);
 
 // sistema de login y registro
