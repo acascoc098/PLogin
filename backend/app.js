@@ -47,9 +47,14 @@ dotenv.config();
 mongoose.connect(process.env.MONGO_URI);
 
 // sistema de login y registro
+//Añadimos rutas de auth y de alumnos
 const authRoutes = require('./routes/auth');
 app.use('/auth', authRoutes);
 
+const alumnoRoutes = require('./routes/alumnos');
+app.use('/alumnos', alumnoRoutes);
+
+//Por defecto a auth
 app.get('/',(req,res)=>{
     res.redirect('/auth');
 });

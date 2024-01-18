@@ -50,5 +50,13 @@ RUTA | MÉTODO | OBSERVACIONES
 /auth/register | POST | Guardar datos formulario registro
 /auth/login | GET   | Mostrar formulario login
 /auth/login |POST   |   Guaradar datos formulario login
+/alumnos | GET | Mostrar tabla lisa de alumnos
+/alumnos/list/(id) | GET | Mostrar alumno con ID
+/alumnos/edit/(id) | GET | Mostrar formulario para editar alumno con ID
+/alumnos/edit/(id) | POST | Guardar info del alumno con ID
+/alumnos/delete/(id) | GET | Mostrar formulario para eliminar alumno con ID
+/alumnos/delete/(id) | POST | Borrar alumno con ID
+/alumnos/create/(id) | GET | Mostrar formulario para añadir
+/alumnos/create/(id) | POST | Guardar info del alumno nuevo
 
 Este fichero tiene la información para hacer la autenticación.

@@ -1,5 +1,37 @@
 const express = require('express');
 const router = express.Router();
+const bcrypt = require('bcrypt');
+const User = require('../models/Alumno');
+
+//Muestra la lista de alumnos
+router.get('/',(req,res) => {
+    res.render('alumnos/index');
+});
+
+//Formulario para dar de alta
+router.get('create', (req, res) => {
+    res.render('alumnos/create')
+});
+//Guarda el alumno
+router.post('create', (req, res) => {
+    const {nombre,apellido,telefono,email} = req.body;
+    const nuevoalumno = new alumno({
+        nombre: nombre,
+        apellido: apellido,
+        telefono: telefono,
+        email: email
+    });
+    try {
+        nuevoalumno.save()
+        res.redirect('/');
+    } catch (error) {
+        res.render('mensaje', {mensajePagina = "Error"+ error})
+    }
+    res.redirect('/');
+});
+
+/*const express = require('express');
+const router = express.Router();
 const Alumno = require('../models/Alumno');
 
 // Obtener todos los alumnos
@@ -70,5 +102,5 @@ router.delete('/alumnos/:id', async (req, res) => {
         res.send('Error al eliminar el alumno');
     }
 });
-
+*/
 module.exports = router;
