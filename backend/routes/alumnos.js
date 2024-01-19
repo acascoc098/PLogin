@@ -25,7 +25,7 @@ router.post('create', (req, res) => {
         nuevoalumno.save()
         res.redirect('/');
     } catch (error) {
-        res.render('mensaje', {mensajePagina = "Error"+ error})
+        res.render('mensaje', {mensajePagina: "Error"+ error})
     }
     res.redirect('/');
 });
