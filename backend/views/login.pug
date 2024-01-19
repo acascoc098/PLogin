@@ -1,17 +1,21 @@
-html 
-    head 
-        meta(charset="UTF-8")
-        meta(name="viewport", content="width=device-width, initial-scale=1.0")
-        title  Entrada en el sistema
-    body 
+extends layout
+
+block content
+    .container 
         h1 Login en el sistema
         form(action="/auth/login", method="post") 
-            label(for="username") Nombre de Usuario:
-            input(type="text", name="username", id="username")
+            
+            label.form-label(for="username") Nombre de Usuario
+            input.form-control(type="text", name="username", id="username")
             br
-            label(for="password") Contraseña:
-            input(type="password", name="password" id="password")
+            
+            label.form-label(for="password") Contraseña
+            input.form-control(type="password", name="password" id="password")
             br
-            button(type="submit") Sign up!
+            
+            
+            button.btn.btn-primary(type="submit") Sign in!
+            
         p ¿Sin usuario? Regístrese 
             a(href="/auth/register") aquí.
+

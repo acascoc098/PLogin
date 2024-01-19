@@ -1,12 +1,6 @@
-doctype html
-html(lang="en")
-    head
-        meta(charset="UTF-8")
-        meta(name="viewport", content="width=device-width, initial-scale=1.0")
-        title tituloPagina
-    body 
+extends layout
+
+block content
+    .container
         h3= mensajePagina 
         a(href="/") Volver al inicio
-
-//Esto en el app.js, en vez de los send
-//res.render('mensaje', {tituloPagina: 'REGISTRO', mensajePagina: 'Usuario registrado correctamente'})

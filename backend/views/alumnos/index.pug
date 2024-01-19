@@ -1,7 +1,29 @@
 extends ../layout
 
-block content 
-    .container
-        
+block content
+    .container 
+        h1 Lista de Alumnos
         br
-        a(href="/alumnos/create") Crear nuevo alumno
+        a(href="/alumnos/create") Crear nuevo alumno 
+        br
+        table#pickle.table.table-hover.table-striped.table-bordered
+            thead
+                tr
+                th Nombre
+                th Apellidos
+                th Correo electrónico 
+                th Teléfono
+                th Acciones
+            tbody
+                each alumno in alumnos
+                    tr
+                        td= alumno.nombre
+                        td= alumno.apellido
+                        td= alumno.email
+                        td= alumno.telefono
+                        td
+                            a(href=`/alumnos/edit/${alumno._id}`) Editar
+                            span | 
+                            a(href=`/alumnos/delete/${alumno._id}`) Eliminar
+        br
+        a(href="/alumnos/create") Crear nuevo alumno 
