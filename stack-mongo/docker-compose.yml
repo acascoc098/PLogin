@@ -15,7 +15,7 @@ services:
     image: mongo-express
     restart: 'no'
     ports:
-      - 8081:8081
+      - ${EXPRESS_PORT}:8081
     environment:
       ME_CONFIG_BASICAUTH_USERNAME: ${EXPRESS_USER}
       ME_CONFIG_BASICAUTH_PASSWORD: ${EXPRESS_PASSWORD}

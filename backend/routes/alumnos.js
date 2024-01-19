@@ -4,8 +4,9 @@ const bcrypt = require('bcrypt');
 const User = require('../models/Alumno');
 
 //Muestra la lista de alumnos
-router.get('/',(req,res) => {
-    res.render('alumnos/index');
+router.get('/', async(req, res) => {
+    const listado = await Alumno.find({});
+    res.render('alumnos/index', {alumnos: listado});
 });
 
 //Formulario para dar de alta

@@ -2,6 +2,36 @@
 
 Proyecto de ejemplo con NodeJS, Mongoose, Mongo, Express, Express-session y dotenv.
 
+```
+-> CREACIÓN DE CONTENEDORES
+docker-compose up -d
+
+-> ARRANCAMOS LOS CONTENEDORES
+docker-compose start
+
+-> BORRAR LOS CONTENEDORES
+docker-compose down
+
+-> BORRAMOS
+docker volume prune
+
+-> BORRAMOS LAS IMÁGENES PARA BORRAR DEL
+docker image rm mongo mongo-express
+```
+
+En la carpeta `stack-mongo` creamos un archivo .env con las credenciales:
+
+```
+MONGO_USER=root
+MONGO_PASSWORD=83uddjfp0cmMD
+MONGO_PORT=27017
+EXPRESS_USER=mongo
+EXPRESS_PASSWORD=83uddjfp0cmMD
+EXPRESS_PORT=8081
+```
+
+
+
 Con el patrón MVC (_Modelo-Vista-Controlador_).
 
 **`¡No olvides!`** Crear un archivo .env en la carpeta backend con el formato:
