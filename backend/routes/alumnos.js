@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const bcrypt = require('bcrypt');
-const User = require('../models/Alumno');
+const Alumno = require('../models/Alumno');
 
 //Muestra la lista de alumnos
 router.get('/', async(req, res) => {
@@ -14,7 +14,7 @@ router.get('create', (req, res) => {
     res.render('alumnos/create')
 });
 //Guarda el alumno
-router.post('create', (req, res) => {
+router.post('create', async(req, res) => {
     const {nombre,apellido,telefono,email} = req.body;
     const nuevoalumno = new alumno({
         nombre: nombre,
@@ -23,12 +23,26 @@ router.post('create', (req, res) => {
         email: email
     });
     try {
-        nuevoalumno.save()
+        await nuevoalumno.save()
         res.redirect('/');
     } catch (error) {
         res.render('mensaje', {mensajePagina: "Error"+ error})
     }
     res.redirect('/');
+});
+
+//Formulario para editar el alumno
+router.get('/edit/:id', async(req,res) => {
+    try{
+        const alumno = await alumno.findById(req.params.id);
+        if(alumno){
+            res.render('alumnos/edit', {alumno: alumno})
+        }else{
+            res.render('mensaje', {mensajePagina: "No se pudo encontrar ese alumno en la base de datos"})
+        }
+    }catch (error){
+        res.render('mensaje', {mensajePagina: "Error al intentar editar el alumno"+ error})
+    }
 });
 
 /*const express = require('express');
