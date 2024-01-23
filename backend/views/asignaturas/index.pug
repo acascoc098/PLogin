@@ -1,0 +1,26 @@
+extends ../layout
+
+block content
+    .container 
+        h1 Lista de Asignaturas
+        br
+        a(href="/asignaturas/create") Crear nueva asignatura
+        br
+        table#pickle.table.table-hover.table-striped.table-bordered
+            thead
+                tr
+                th Nombre
+                th Cuatrimestre
+                th Curso
+            tbody
+                each asignatura in asignaturas
+                    tr
+                        td= asignatura.nombre
+                        td= asignatura.cuatrimestre
+                        td= asignatura.curso
+                        td
+                            a(href=`/asignaturas/edit/${alumno._id}`) Editar
+                            span | 
+                            a(href=`/asignaturas/delete/${alumno._id}`) Eliminar
+        br
+        a(href="/asignaturas/create") Crear nuevo alumno 

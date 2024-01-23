@@ -1,0 +1,18 @@
+extends ../layout
+
+block content
+    .container
+
+        .container 
+        form(action=`/asignaturas/delete/${asignatura._id}`, method="post") 
+            label.form-label(for="nombre") Nombre:
+            input.form-control(type="text", name="nombre", required, value=`${asignatura.nombre}` disabled)
+            br
+            label.form-label(for="cuatrimestre") Cuatrimestre:
+            input.form-control(type="text", name="cuatrimestre", required, value=`${asignatura.cuatrimestre}` disabled)
+            br
+            label.form-label(for="curso") Curso:
+            input.form-control(type="text", name="curso", required, value=`${asignatura.curso}` disabled)
+            br
+            button.btn.btn-success(type="submit") Guardar
+            a.btn.btn-danger(href="/asignaturas") Cancelar

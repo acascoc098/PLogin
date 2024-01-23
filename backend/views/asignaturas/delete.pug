@@ -1,0 +1,20 @@
+extends ../layout
+
+block content
+    .container
+        h2
+        .container 
+        form(action=`/asignaturas/delete/${alumno._id}`, method="post") 
+            label.form-label(for="nombre") Nombre:
+            input.form-control(type="text", name="nombre", required, value=`${asigatura.nombre}` disabled)
+            br
+            label.form-label(for="cuatrimestre") Cuatrimestre:
+            input.form-control(type="text", name="cuatrimestre", required, value=`${asignatura.cuatrimestre}` disabled)
+            br
+            label.form-label(for="curso") Curso:
+            input.form-control(type="text", name="curso", required, value=`${asigatura.curso}` disabled)
+            br
+            p Se va a proceder al borrado de la asignatura
+            p ¿Estás seguro?
+            button.btn.btn-danger.btn.btn-success(type="submit") Si
+            a.btn.btn-success(href="/asignaturas") No

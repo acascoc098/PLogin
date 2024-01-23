@@ -1,0 +1,16 @@
+extends ../layout
+
+block content
+    .container 
+        form(action="/asignaturas/create", method="post") 
+            label.form-label(for="nombre") Nombre:
+            input.form-control(type="text", name="nombre", required)
+            br
+            label.form-label(for="cuatrimestre") Cuatrimestre:
+            input.form-control(type="text", name="cuatrimestre", required)
+            br
+            label.form-label(for="curso") Curso:
+            input.form-control(type="text", name="curso", required)
+            br
+            button.btn.btn-success(type="submit") Guardar
+            a.btn.btn-danger(href="/asignaturas") Cancelar
