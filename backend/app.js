@@ -49,6 +49,9 @@ app.use('/auth', authRoutes);
 // añadimos las rutas de ALUMNOS.JS
 const alumnoRoutes = require('./routes/alumnos');
 app.use('/alumnos', alumnoRoutes);
+// añadimos las rutoas de ASIGNATURAS.JS
+const asiganturaRoutes = require('./routes/asignaturas');
+app.use('/asignaturas', asiganturaRoutes);
 
 // por defecto vamos a /auth
 app.get('/', (req, res) => {

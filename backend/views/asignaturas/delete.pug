@@ -4,7 +4,7 @@ block content
     .container
         h2
         .container 
-        form(action=`/asignaturas/delete/${alumno._id}`, method="post") 
+        form(action=`/asignaturas/delete/${asignatura._id}`, method="post") 
             label.form-label(for="nombre") Nombre:
             input.form-control(type="text", name="nombre", required, value=`${asigatura.nombre}` disabled)
             br

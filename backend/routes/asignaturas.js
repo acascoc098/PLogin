@@ -11,7 +11,7 @@ router.get('/', async(req, res) => {
 
 // muestra el formulario alta alumno
 router.get('/create', (req, res) =>{
-    res.render('asignatura/create')
+    res.render('asignaturas/create')
 });
 
 // guarda el alumno en la BBDD
@@ -35,11 +35,11 @@ router.get('/edit/:id', async (req, res) => {
     try {
         const asignatura = await Asignatura.findById(req.params.id);
         if (asignatura)
-            res.render('asignaturas/edit', {alumno: alumno});
+            res.render('asignaturas/edit', {asignatura: asignatura});
         else
             res.render('mensaje', {mensajePagina:'No encuentro esa asignatura en la base de datos'});
     } catch {
-        res.render('mensaje', {mensajePagina: 'Error al intentar editar asignatura'});
+        res.render('mensaje', {mensajePagina: 'Error al intentar editar asignatura 1'});
     }
 
 });
@@ -61,9 +61,9 @@ router.post('/edit/:id', async (req, res) => {
 
 router.get('/delete/:id', async (req, res) => {
     try {
-        const alumno = await Alumno.findById(req.params.id);
-        if (alumno)
-            res.render('asignatura/delete', {alumno: alumno});
+        const asignatura = await Asignatura.findById(req.params.id);
+        if (asignatura)
+            res.render('asignaturas/delete', {asignatura: asignatura});
         else
         res.render('mensaje', {mensajePagina:'No encuentro esa asignatura en la base de datos'});
     } catch {

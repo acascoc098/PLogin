@@ -14,7 +14,7 @@ const asignaturaSchema = mongoose.Schema({
         },
         curso: { 
             type: String, 
-            unique: true,
+            unique: false,
             required: true 
         }
     }
