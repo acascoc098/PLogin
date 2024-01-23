@@ -1,0 +1,23 @@
+extends ../layout
+
+block content
+    .container
+        h2
+        .container 
+        form(action=`/alumnos/delete/${alumno._id}`, method="post") 
+            label.form-label(for="nombre") Nombre:
+            input.form-control(type="text", name="nombre", required, value=`${alumno.nombre}` disabled)
+            br
+            label.form-label(for="apellido") Apellido
+            input.form-control(type="text", name="apellido", required, value=`${alumno.apellido}` disabled)
+            br
+            label.form-label(for="telefono") Telefono:
+            input.form-control(type="tel", name="telefono", required, value=`${alumno.telefono}` disabled)
+            br
+            label.form-label(for="email") Correo electrónico:
+            input.form-control(type="email", name="email", required, value=`${alumno.email}` disabled)
+            br
+            p Se va a proceder al borrado del alumno
+            p ¿Estás seguro?
+            button.btn.btn-danger.btn.btn-success(type="submit") Si
+            a.btn.btn-success(href="/alumnos") No

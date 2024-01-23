@@ -3,47 +3,90 @@ const router = express.Router();
 const bcrypt = require('bcrypt');
 const Alumno = require('../models/Alumno');
 
-//Muestra la lista de alumnos
+// muestra en una tabla la lista de alumnos
 router.get('/', async(req, res) => {
     const listado = await Alumno.find({});
     res.render('alumnos/index', {alumnos: listado});
 });
 
-//Formulario para dar de alta
-router.get('create', (req, res) => {
+// muestra el formulario alta alumno
+router.get('/create', (req, res) =>{
     res.render('alumnos/create')
 });
-//Guarda el alumno
-router.post('create', async(req, res) => {
-    const {nombre,apellido,telefono,email} = req.body;
-    const nuevoalumno = new alumno({
+
+// guarda el alumno en la BBDD
+router.post('/create', async (req, res) =>{
+    const {nombre, apellido, telefono, email} = req.body;
+    const alumno = new Alumno({
         nombre: nombre,
         apellido: apellido,
         telefono: telefono,
         email: email
     });
     try {
-        await nuevoalumno.save()
-        res.redirect('/');
+        await alumno.save();
+        res.redirect('/alumnos');
     } catch (error) {
-        res.render('mensaje', {mensajePagina: "Error"+ error})
+        res.render('mensaje', {mensajePagina: 'ERROR: ' + 
+            'El correo electrónico o el teléfono proporcionado ya existía en la base de datos.'})
     }
-    res.redirect('/');
 });
 
-//Formulario para editar el alumno
-router.get('/edit/:id', async(req,res) => {
-    try{
-        const alumno = await alumno.findById(req.params.id);
-        if(alumno){
-            res.render('alumnos/edit', {alumno: alumno})
-        }else{
-            res.render('mensaje', {mensajePagina: "No se pudo encontrar ese alumno en la base de datos"})
-        }
-    }catch (error){
-        res.render('mensaje', {mensajePagina: "Error al intentar editar el alumno"+ error})
+router.get('/edit/:id', async (req, res) => {
+    try {
+        const alumno = await Alumno.findById(req.params.id);
+        if (alumno)
+            res.render('alumnos/edit', {alumno: alumno});
+        else
+            res.render('mensaje', {mensajePagina:'No encuentro ese alumno en la base de datos'});
+    } catch {
+        res.render('mensaje', {mensajePagina: 'Error al intentar editar alumno'});
     }
+
 });
+
+router.post('/edit/:id', async (req, res) => {
+    try {
+        const {nombre, apellido, telefono, email} = req.body;
+        await Alumno.findOneAndUpdate({_id: req.params.id},{
+            nombre:nombre,
+            apellido: apellido,
+            telefono: telefono,
+            email: email
+        });
+        res.redirect('/alumnos');
+    } catch {
+        res.render('mensaje', {mensajePagina: 'Error al intentar editar alumno'});
+    }
+
+});
+
+router.get('/delete/:id', async (req, res) => {
+    try {
+        const alumno = await Alumno.findById(req.params.id);
+        if (alumno)
+            res.render('alumnos/delete', {alumno: alumno});
+        else
+            res.render('mensaje', {mensajePagina:'No encuentro ese alumno en la base de datos'});
+    } catch {
+        res.render('mensaje', {mensajePagina: 'Error al intentar eliminar alumno'});
+    }
+
+});
+
+router.post('/delete/:id', async (req, res) => {
+    try {
+        const {nombre, apellido, telefono, email} = req.body;
+        await Alumno.findByIdAndDelete(req.params.id);
+        res.redirect('/alumnos');
+    } catch {
+        res.render('mensaje', {mensajePagina: 'Error al intentar eliminar alumno'});
+    }
+
+});
+
+module.exports=router;
+
 
 /*const express = require('express');
 const router = express.Router();
@@ -118,4 +161,4 @@ router.delete('/alumnos/:id', async (req, res) => {
     }
 });
 */
-module.exports = router;
+//module.exports = router;
